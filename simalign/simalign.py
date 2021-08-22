@@ -231,9 +231,9 @@ class SentenceAligner(object):
 				for ext in self.matching_methods:
 					if all_mats[ext][i, j] > 0:
 						if self.token_type == "bpe":
-							aligns[ext].add((l1_b2w_map[i], l2_b2w_map[j]))
+							aligns[ext].add((l1_b2w_map[i], l2_b2w_map[j], all_mats[ext][i, j]))
 						else:
-							aligns[ext].add((i, j))
+							aligns[ext].add((i, j, all_mats[ext][i, j]))
 		for ext in aligns:
 			aligns[ext] = sorted(aligns[ext])
 		return aligns
